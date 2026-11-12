@@ -114,9 +114,22 @@ card.style.display=card.innerText.toLowerCase().includes(value)?"block":"none";
 
 function submitBooking(event){
 event.preventDefault();
-alert("Thank you! Booking feature will be available soon.");
-}
-</script>
 
-</body>
-</html>
+let name = document.getElementById("name").value;
+let phone = document.getElementById("phone").value;
+let service = document.getElementById("service").value;
+let address = document.getElementById("address").value;
+let date = document.getElementById("date").value;
+
+let message = `New QuickServe Booking!
+
+Name: ${name}
+Customer Mobile: ${phone}
+Service: ${service}
+Address: ${address}
+Preferred Date: ${date}`;
+
+let url = "https://wa.me/917820902982?text=" + encodeURIComponent(message);
+
+window.location.href = url;
+}
