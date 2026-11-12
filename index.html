@@ -1,43 +1,122 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>QuickServe | Pune Home Services</title>
+<title>QuickServe | Pune</title>
 
 <style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#f5f8fc;color:#172b4d}
+header{background:#fff;padding:18px 6%;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:25px;font-weight:bold;color:#0878d1}
+.logo span{color:#13a878}
+.hero{background:linear-gradient(135deg,#0878d1,#13a878);color:white;text-align:center;padding:55px 20px}
+.hero h1{font-size:32px;margin-bottom:12px}
+.hero p{font-size:16px;line-height:1.5}
+.container{max-width:950px;margin:auto;padding:25px 16px}
+h2{margin-bottom:18px}
+.search{width:100%;padding:14px;border:1px solid #ddd;border-radius:10px;margin-bottom:22px;font-size:16px}
+.services{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.card{background:white;padding:20px 10px;text-align:center;border-radius:12px;box-shadow:0 3px 12px #00000010;cursor:pointer;border:1px solid #e8edf3}
+.card .icon{font-size:32px;margin-bottom:9px}
+.card h3{font-size:16px}
+.booking{background:white;padding:22px;border-radius:14px;margin-top:30px;box-shadow:0 3px 12px #00000010}
+.booking input,.booking select,.booking textarea{width:100%;padding:13px;margin:8px 0 14px;border:1px solid #ddd;border-radius:8px;font-size:15px}
+button{background:#0878d1;color:white;border:0;padding:14px;border-radius:8px;width:100%;font-size:16px;font-weight:bold}
+.note{font-size:13px;color:#666;margin-top:12px;line-height:1.5}
+footer{text-align:center;padding:25px;color:#777;font-size:13px}
+@media(min-width:650px){.services{grid-template-columns:repeat(4,1fr)}}
+</style>
+</head>
 
-* {
+<body>
 
-  margin: 0;
+<header>
+<div class="logo">Quick<span>Serve</span></div>
+<strong>Pune 📍</strong>
+</header>
 
-  padding: 0;
+<section class="hero">
+<h1>Home Services Made Easy!</h1>
+<p>Find trusted service professionals near you in Pune.</p>
+</section>
 
-  box-sizing: border-box;
+<main class="container">
 
-  font-family: Arial, sans-serif;
+<h2>Explore Services</h2>
+<input class="search" id="search" type="text" placeholder="Search services..." oninput="searchServices()">
 
+<div class="services" id="services">
+
+<div class="card" onclick="selectService('Electrician')"><div class="icon">💡</div><h3>Electrician</h3></div>
+<div class="card" onclick="selectService('Plumber')"><div class="icon">🚰</div><h3>Plumber</h3></div>
+<div class="card" onclick="selectService('Carpenter')"><div class="icon">🪚</div><h3>Carpenter</h3></div>
+<div class="card" onclick="selectService('Painter')"><div class="icon">🎨</div><h3>Painter</h3></div>
+<div class="card" onclick="selectService('AC Repair')"><div class="icon">❄️</div><h3>AC Repair</h3></div>
+<div class="card" onclick="selectService('Cleaning')"><div class="icon">🧹</div><h3>Cleaning</h3></div>
+<div class="card" onclick="selectService('Appliance Repair')"><div class="icon">🔧</div><h3>Appliance Repair</h3></div>
+<div class="card" onclick="selectService('Pest Control')"><div class="icon">🐜</div><h3>Pest Control</h3></div>
+
+</div>
+
+<section class="booking" id="booking">
+<h2>Request a Service</h2>
+
+<form onsubmit="submitBooking(event)">
+
+<label>Your Name</label>
+<input type="text" id="name" placeholder="Enter your name" required>
+
+<label>Mobile Number</label>
+<input type="tel" id="phone" placeholder="Enter 10-digit mobile number" pattern="[0-9]{10}" required>
+
+<label>Select Service</label>
+<select id="service" required>
+<option value="">Choose a service</option>
+<option>Electrician</option>
+<option>Plumber</option>
+<option>Carpenter</option>
+<option>Painter</option>
+<option>AC Repair</option>
+<option>Cleaning</option>
+<option>Appliance Repair</option>
+<option>Pest Control</option>
+</select>
+
+<label>Your Address in Pune</label>
+<textarea id="address" placeholder="Enter your full address" required></textarea>
+
+<label>Preferred Date</label>
+<input type="date" id="date" required>
+
+<button type="submit">Submit Request</button>
+</form>
+
+<p class="note">Note: This is currently a demo website. Booking requests are not yet stored or sent to service providers.</p>
+</section>
+</main>
+
+<footer>© 2026 QuickServe Pune | Local Home Services</footer>
+
+<script>
+function selectService(name){
+document.getElementById("service").value=name;
+document.getElementById("booking").scrollIntoView({behavior:"smooth"});
 }
 
-body {
-
-  background: #f7f9fc;
-
-  color: #172b4d;
-
+function searchServices(){
+let value=document.getElementById("search").value.toLowerCase();
+document.querySelectorAll(".card").forEach(card=>{
+card.style.display=card.innerText.toLowerCase().includes(value)?"block":"none";
+});
 }
 
-header {
+function submitBooking(event){
+event.preventDefault();
+alert("Thank you! Booking feature will be available soon.");
+}
+</script>
 
-  background: white;
-
-  padding: 18px 6%;
-
-  display: flex;
-
-  justify-content: sp
+</body>
+</html>
